@@ -26,12 +26,21 @@ public class EtudiantServiceImp implements EtudiantService {
 
     @Override
     public Etudiant update(long id, Etudiant etudiant) {
-        return null;
+        Etudiant oldEtudiant = repository.findById(id).get();
+        oldEtudiant.setNom(etudiant.getNom());
+        oldEtudiant.setPrenom(etudiant.getPrenom());
+        oldEtudiant.setEmail(etudiant.getEmail());
+        oldEtudiant.setDateDeNaissance(etudiant.getDateDeNaissance());
+        oldEtudiant.setGsm(etudiant.getGsm());
+
+        repository.save(oldEtudiant);
+
+        return oldEtudiant;
     }
 
     @Override
-    public Etudiant delete(long id) {
-        return null;
+    public void delete(long id) {
+        repository.delete(repository.findById(id).get());
     }
 
     @Override

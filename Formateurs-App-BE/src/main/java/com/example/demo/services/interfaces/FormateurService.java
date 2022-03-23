@@ -10,7 +10,7 @@ public interface FormateurService {
 
     public Formateur create(Formateur formateur);
     public Formateur update(long id, Formateur formateur);
-    public Formateur delete(long id);
+    public void delete(long id);
     public List<Formateur> getAll();
 
 }

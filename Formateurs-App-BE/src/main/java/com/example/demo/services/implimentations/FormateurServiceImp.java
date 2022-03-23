@@ -25,8 +25,8 @@ public class FormateurServiceImp implements FormateurService {
     }
 
     @Override
-    public Formateur delete(long id) {
-        return null;
+    public void delete(long id) {
+
     }
 
     @Override
