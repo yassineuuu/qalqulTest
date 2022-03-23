@@ -1,9 +1,6 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,8 +13,10 @@ public class Etudiant implements Serializable {
     private String Uuid;
     private String nom;
     private String prenom;
+    @Column(unique = true)
     private String email;
     private Date dateDeNaissance;
+    @Column(unique = true)
     private String gsm;
 
     public Etudiant() {

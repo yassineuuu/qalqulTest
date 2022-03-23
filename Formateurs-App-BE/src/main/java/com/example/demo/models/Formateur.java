@@ -12,8 +12,10 @@ public class Formateur {
     private String Uuid;
     private String nom;
     private String prenom;
+    @Column(unique = true)
     private String email;
     private String dateDeNaissance;
+    @Column(unique = true)
     private String gsm;
 
    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Etudiant.class)

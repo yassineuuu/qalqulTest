@@ -1,5 +1,6 @@
 package com.example.demo.services.implimentations;
 
+import com.example.demo.Utils.Utils;
 import com.example.demo.models.Etudiant;
 import com.example.demo.repositories.EtudianRepository;
 import com.example.demo.services.interfaces.EtudiantService;
@@ -17,6 +18,7 @@ public class EtudiantServiceImp implements EtudiantService {
 
     @Override
     public Etudiant create(Etudiant etudiant) {
+        etudiant.setUuid(Utils.generateUserId(16));
         repository.save(etudiant);
         return etudiant;
     }
