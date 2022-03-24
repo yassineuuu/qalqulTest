@@ -41,6 +41,16 @@ public class FormateurServiceImp implements FormateurService {
     }
 
     @Override
+    public Formateur addEtidiant(long formateurId, Etudiant etudiant) {
+        Formateur formateur = repository.findById(formateurId).get();
+        List<Etudiant> etudiants = formateur.getEtudiants();
+        etudiants.add(etudiant);
+        formateur.setEtudiants(etudiants);
+        repository.save(formateur);
+        return formateur;
+    }
+
+    @Override
     public void delete(long id) {
         repository.delete(repository.findById(id).get());
     }

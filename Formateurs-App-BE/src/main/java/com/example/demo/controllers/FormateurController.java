@@ -24,6 +24,11 @@ public class FormateurController {
         return new ResponseEntity<>(formateurService.create(formateur), HttpStatus.CREATED);
     }
 
+    @PostMapping("/addEtudiant")
+    public ResponseEntity<Formateur> addEtidiant(@RequestParam String formateurId, @RequestBody Etudiant etudiant) {
+        return new ResponseEntity<>(formateurService.addEtidiant(Long.parseLong(formateurId), etudiant), HttpStatus.CREATED);
+    }
+
     @GetMapping("")
     public ResponseEntity<List<Formateur>> allFormateur(){
         return new ResponseEntity<>(formateurService.getAll(), HttpStatus.OK);
