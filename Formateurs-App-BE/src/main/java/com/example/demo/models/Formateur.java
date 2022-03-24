@@ -1,9 +1,19 @@
 package com.example.demo.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+@ToString
 public class Formateur {
 
     @Id
@@ -14,15 +24,18 @@ public class Formateur {
     private String prenom;
     @Column(unique = true)
     private String email;
-    private String dateDeNaissance;
+    private Date dateDeNaissance;
     @Column(unique = true)
     private String gsm;
 
    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Etudiant.class)
-   @JoinTable(name = "etudiants", joinColumns = { @JoinColumn(name = "id") })
+   @JoinColumn(name = "classe", referencedColumnName = "id")
     private List<Etudiant> etudiants;
 
-    public Formateur(long id, String uuid, String nom, String prenom, String email, String dateDeNaissance, String gsm, List<Etudiant> etudiants) {
+    public Formateur() {
+    }
+
+    public Formateur(long id, String uuid, String nom, String prenom, String email, Date dateDeNaissance, String gsm, List<Etudiant> etudiants) {
         this.id = id;
         Uuid = uuid;
         this.nom = nom;
@@ -33,7 +46,7 @@ public class Formateur {
         this.etudiants = etudiants;
     }
 
-    public Formateur(String nom, String prenom, String email, String dateDeNaissance, String gsm) {
+    public Formateur(String nom, String prenom, String email, Date dateDeNaissance, String gsm) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -41,7 +54,7 @@ public class Formateur {
         this.gsm = gsm;
     }
 
-    public Formateur(String nom, String prenom, String email, String dateDeNaissance, String gsm, List<Etudiant> etudiants) {
+    public Formateur(String nom, String prenom, String email, Date dateDeNaissance, String gsm, List<Etudiant> etudiants) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -91,11 +104,11 @@ public class Formateur {
         this.email = email;
     }
 
-    public String getDateDeNaissance() {
+    public Date getDateDeNaissance() {
         return dateDeNaissance;
     }
 
-    public void setDateDeNaissance(String dateDeNaissance) {
+    public void setDateDeNaissance(Date dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
     }
 
